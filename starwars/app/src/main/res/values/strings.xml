@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">StarWars</string>
+    <string name="films">films</string>
+    <string name="people">people</string>
+    <string name="planet">planet</string>
+    <string name="specie">specie</string>
+    <string name="starship">starship</string>
+    <string name="vehicle">vehicle</string>
+</resources>
