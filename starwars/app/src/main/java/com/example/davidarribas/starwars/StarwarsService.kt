@@ -8,5 +8,4 @@ interface StarwarsService {
 
     @GET("films/")
     fun getFilms(): Call<Films>
-    fun gola(): Call
 }

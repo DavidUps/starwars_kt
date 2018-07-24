@@ -1,6 +1,6 @@
 package com.example.davidarribas.starwars.model
 
-class Film (val title : String,
+data class Film (val title : String,
             val episode_id : Int,
             val opening_crawl : String,
             val director : String,

@@ -1,3 +1,3 @@
 package com.example.davidarribas.starwars.model
 
-class Films (val count: Int, val results: List<Film>)
+data class Films (val count: Int, val results: List<Film>)
