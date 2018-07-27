@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,8 +10,20 @@
 
     <style name="TextViewMain">
         <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextViewTitle">
+        <item name="android:textSize">28dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:fontWeight">1</item>
+    </style>
+
+    <style name="TextViewTitleII">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontWeight">1</item>
     </style>
 
 </resources>

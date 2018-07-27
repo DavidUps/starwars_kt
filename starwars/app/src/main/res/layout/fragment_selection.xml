@@ -11,28 +11,30 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/film"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivFilm"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/flim"/>
+                android:layout_weight="3"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/films"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
 
@@ -42,20 +44,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivPeople"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/people"/>
+                android:layout_weight="3"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/people"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
 
@@ -73,20 +78,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivPlanet"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/planet"/>
+                android:layout_weight="3"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/planet"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
 
@@ -96,20 +104,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivSpecie"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/specie"/>
+                android:layout_weight="3"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/specie"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
 
@@ -127,20 +138,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivStarship"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/starship"/>
+                android:layout_weight="3" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/starship"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
 
@@ -150,22 +164,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="4"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_background"
             android:orientation="vertical">
 
-            <ImageView
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/ivVehicle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/vehicle"/>
+                android:layout_weight="3"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/vehicle"
+                android:gravity="center"
                 android:theme="@style/TextViewMain"/>
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

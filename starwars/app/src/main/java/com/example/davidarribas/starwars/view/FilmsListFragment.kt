@@ -13,7 +13,7 @@ import com.example.davidarribas.starwars.StarwarsService
 import com.example.davidarribas.starwars.adapters.FilmListAdapter
 import com.example.davidarribas.starwars.model.Film
 import com.example.davidarribas.starwars.model.Films
-import kotlinx.android.synthetic.main.fragment_films.*
+import kotlinx.android.synthetic.main.fragment_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,10 +26,7 @@ class FilmsListFragment: Fragment() {
     private val filmList: ArrayList<Film> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val view = inflater.inflate(R.layout.fragment_films, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,13 +36,13 @@ class FilmsListFragment: Fragment() {
     }
 
     private fun loadFilms(){
-        val builderPerson = Retrofit.Builder()
+        val builderFilm = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
 
-        val person = builderPerson.build()
+        val film = builderFilm.build()
 
-        val starWarsClient = person.create(StarwarsService::class.java!!)
+        val starWarsClient = film.create(StarwarsService::class.java!!)
         val call = starWarsClient.getFilms()
 
         call.enqueue(object : Callback<Films> {
@@ -58,8 +55,8 @@ class FilmsListFragment: Fragment() {
                             film.results[i].edited, film.results[i].url))
                 }
 
-                rvFlims.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-                rvFlims.adapter = FilmListAdapter(filmList, view!!.context, {item : Film -> filmClicked(item)})
+                rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+                rvList.adapter = FilmListAdapter(filmList, view!!.context, {item : Film -> filmClicked(item)})
             }
 
             override fun onFailure(call: Call<Films>, t: Throwable) {
@@ -69,6 +66,6 @@ class FilmsListFragment: Fragment() {
     }
 
     private fun filmClicked(film: Film){
-        Toast.makeText(activity, "Clicked: ${film.title}", Toast.LENGTH_LONG).show()
+        (activity as MainActivity).openFilmFramgent(film)
     }
 }

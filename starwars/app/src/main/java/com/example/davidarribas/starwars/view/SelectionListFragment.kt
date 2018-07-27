@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.davidarribas.starwars.R
+import com.example.davidarribas.starwars.model.ImagesUrl
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_selection.*
 
 class SelectionListFragment : Fragment(){
@@ -44,6 +46,8 @@ class SelectionListFragment : Fragment(){
         vehicle.setOnClickListener {
             openVehicles()
         }
+
+        loadImages()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,4 +80,12 @@ class SelectionListFragment : Fragment(){
         (activity as MainActivity).openVehicles()
     }
 
+    private fun loadImages(){
+        Picasso.get().load(ImagesUrl.selectionFilm).into(ivFilm)
+        Picasso.get().load(ImagesUrl.selectionPeople).into(ivPeople)
+        Picasso.get().load(ImagesUrl.selectionPlanet).into(ivPlanet)
+        Picasso.get().load(ImagesUrl.selectionSpecie).into(ivSpecie)
+        Picasso.get().load(ImagesUrl.selectionStarship).into(ivStarship)
+        Picasso.get().load(ImagesUrl.selectionVehicle).into(ivVehicle)
+    }
 }
