@@ -28,7 +28,7 @@ class FilmListAdapter (var films: ArrayList<Film>, val context: Context, val cli
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bindItems(film: Film, context: Context, clickListener: (Film) -> Unit){
-            itemView.tvFilmName.setText(film.title)
+            itemView.tvTitle.setText(film.title)
             itemView.setOnClickListener { clickListener(film) }
         }
     }

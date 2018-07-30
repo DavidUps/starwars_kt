@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.StarwarsService
+import com.example.davidarribas.starwars.adapters.PersonListAdapter
+import com.example.davidarribas.starwars.model.Film
 import com.example.davidarribas.starwars.model.Person
 import com.example.davidarribas.starwars.model.PersonList
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -20,8 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PeopleListFragment : Fragment() {
 
-    private val BASE_URL = "https://swapi.co/api/"
+    private val BASE_URL = "https://swapi.co/api/people/?page="
     private val personList: ArrayList<Person> = ArrayList()
+    private var count = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -45,7 +48,7 @@ class PeopleListFragment : Fragment() {
         val person = builderPerson.build()
 
         val starWarsClient = person.create(StarwarsService::class.java!!)
-        val call = starWarsClient.getPeople()
+        val call = starWarsClient.getPeople(count.toString())
 
         call.enqueue(object : Callback<PersonList>{
             override fun onFailure(call: Call<PersonList>?, t: Throwable?) {
@@ -54,16 +57,18 @@ class PeopleListFragment : Fragment() {
 
             override fun onResponse(call: Call<PersonList>?, response: Response<PersonList>?) {
                 val person = response!!.body()
-                for (i in 0..person!!.count -1){
-                    personList.add(Person(person.result[i].name,
-                            person.result[i].height, person.result[i].mass, person.result[i].hair_color, person.result[i].skin_color,
-                            person.result[i].eye_color, person.result[i].birth_year, person.result[i].gender, person.result[i].homeworld,
-                            person.result[i].films, person.result[i].species,person.result[i].vehicles,person.result[i].starships))
+                for (i in 0..person!!.results.size - 1){
+                    personList.add(Person(person.results[i].name,
+                            person.results[i].height, person.results[i].mass, person.results[i].hair_color, person.results[i].skin_color,
+                            person.results[i].eye_color, person.results[i].birth_year, person.results[i].gender, person.results[i].homeworld,
+                            person.results[i].films, person.results[i].species,person.results[i].vehicles,person.results[i].starships))
                 }
-
                 rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-                rvList.adapter =
+                rvList.adapter = PersonListAdapter(personList, view!!.context,{item: Person -> personClicked(item)})
             }
         })
+    }
+    private fun personClicked(person: Person){
+        //(activity as MainActivity).openFilmFramgent(person)
     }
 }

@@ -17,7 +17,7 @@ class Person (val name: String,
               val vehicles: ArrayList<String>,
               val starships: ArrayList<String>
               ): Parcelable{
-    constructor(parcel: String) : this(
+    constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readInt(),
             parcel.readInt(),
@@ -58,4 +58,5 @@ class Person (val name: String,
             return arrayOfNulls(size)
         }
     }
+
 }
