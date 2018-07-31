@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Person (val name: String,
-              val height: Int,
-              val mass: Int,
+              val height: String,
+              val mass: String,
               val hair_color: String,
               val skin_color: String,
               val eye_color: String,
@@ -19,8 +19,8 @@ class Person (val name: String,
               ): Parcelable{
     constructor(parcel: Parcel) : this(
             parcel.readString(),
-            parcel.readInt(),
-            parcel.readInt(),
+            parcel.readString(),
+            parcel.readString(),
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
@@ -35,8 +35,8 @@ class Person (val name: String,
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeInt(height)
-        parcel.writeInt(mass)
+        parcel.writeString(height)
+        parcel.writeString(mass)
         parcel.writeString(hair_color)
         parcel.writeString(skin_color)
         parcel.writeString(eye_color)
