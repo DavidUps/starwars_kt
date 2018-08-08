@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.model.Film
+import com.example.davidarribas.starwars.model.Person
 
 class MainActivity : AppCompatActivity(){
 
@@ -17,9 +18,13 @@ class MainActivity : AppCompatActivity(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, FilmsListFragment()).addToBackStack("openFilm").commit()
     }
 
-    fun openPeople(){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PeopleListFragment()).addToBackStack("openPeople").commit()
+    fun openPeopleList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PeopleListFragment()).addToBackStack("openPeopleList").commit()
 
+    }
+
+    fun openPeople(person : Person){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PeopleFragment.newInstance(person)).addToBackStack("openPeople").commit()
     }
 
     fun openPlanet(){

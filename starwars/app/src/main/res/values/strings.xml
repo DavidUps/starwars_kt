@@ -11,4 +11,11 @@
     <string name="producer">Productor: </string>
     <string name="releaseDate">Fecha: </string>
     <string name="opening">Opening</string>
+    <string name="height">height:</string>
+    <string name="mass">mass:</string>
+    <string name="hair_color">hair color:</string>
+    <string name="skin_color">skin color:</string>
+    <string name="eye_color">Eye color:</string>
+    <string name="birthday_year">Birthday year:</string>
+    <string name="gender">Gender:</string>
 </resources>

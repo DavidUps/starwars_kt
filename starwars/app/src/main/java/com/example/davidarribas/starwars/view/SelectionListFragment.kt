@@ -61,7 +61,7 @@ class SelectionListFragment : Fragment(){
     }
 
     private fun openPeople(){
-        (activity as MainActivity).openPeople()
+        (activity as MainActivity).openPeopleList()
     }
 
     private fun openPlanet(){

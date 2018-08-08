@@ -28,17 +28,17 @@ class PeopleListFragment : Fragment() {
     private var count = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadPeople()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadPeople()
     }
 
     private fun loadPeople() {
@@ -48,11 +48,9 @@ class PeopleListFragment : Fragment() {
 
         val person = builderPerson.build()
 
-        val starWarsClient = person.create(StarwarsService::class.java!!)
+        val starwarsService = person.create(StarwarsService::class.java!!)
 
-        getPeople(starWarsClient)
-
-
+        getPeople(starwarsService)
     }
 
     private fun getPeople(starWarsClient: StarwarsService) {
@@ -72,20 +70,20 @@ class PeopleListFragment : Fragment() {
                             person.results[i].eye_color, person.results[i].birth_year, person.results[i].gender, person.results[i].homeworld,
                             person.results[i].films, person.results[i].species, person.results[i].vehicles, person.results[i].starships))
                 }
-                if (count <= 8
-                ){
+                if (count <= 8){
                     count++
                     getPeople(starWarsClient)
                 }else{
-                    rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-                    rvList.adapter = PersonListAdapter(personList, view!!.context, { item: Person -> personClicked(item) })
+                    if (rvList != null){
+                        rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+                        rvList.adapter = PersonListAdapter(personList, view!!.context, { item: Person -> personClicked(item) })
+                    }
                 }
-
             }
         })
     }
 
     private fun personClicked(person: Person) {
-        //(activity as MainActivity).openFilmFramgent(person)
+        (activity as MainActivity).openPeople(person)
     }
 }

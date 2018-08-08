@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "103843073423",
+    "firebase_url": "https://starwars-kotlin.firebaseio.com",
+    "project_id": "starwars-kotlin",
+    "storage_bucket": "starwars-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103843073423:android:814688728dc700e7",
+        "android_client_info": {
+          "package_name": "com.example.davidarribas.starwars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103843073423-g5p8dq6sgtsvp3rh5qb57d4p1vm054ih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQxNr4d0-bHZGVDECJ67U6osbpW02HGik"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
