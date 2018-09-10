@@ -18,7 +18,7 @@ class PeopleFragment : Fragment() {
         fun newInstance(person: Person) : PeopleFragment{
             val fragment = PeopleFragment()
             val args = Bundle()
-            args.putParcelable("person", person)
+            args.putSerializable("person", person)
             fragment.arguments = args
             return fragment
         }
@@ -26,7 +26,7 @@ class PeopleFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        person = arguments!!.getParcelable("person")
+        person = arguments!!.getSerializable("person") as Person
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

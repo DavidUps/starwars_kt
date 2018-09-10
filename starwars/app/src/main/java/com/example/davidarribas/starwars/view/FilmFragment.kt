@@ -26,7 +26,7 @@ class FilmFragment : Fragment() {
         fun newInstance(film: Film) : FilmFragment{
             val fragment = FilmFragment()
             val args = Bundle()
-            args.putParcelable("films", film)
+            args.putSerializable("films", film)
             fragment.arguments = args
             return fragment
         }
@@ -34,7 +34,7 @@ class FilmFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        film = arguments!!.getParcelable("films")
+        film = arguments!!.getSerializable("films") as Film
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
