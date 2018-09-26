@@ -10,15 +10,12 @@ import com.example.davidarribas.starwars.model.ImagesUrl
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_selection.*
 
-class SelectionListFragment : Fragment(){
+class SelectionListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_selection, container, false)
+        return  inflater.inflate(R.layout.fragment_selection, container, false)
 
-        return view
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,11 +45,6 @@ class SelectionListFragment : Fragment(){
         }
 
         loadImages()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
 
     }
 
@@ -65,7 +57,7 @@ class SelectionListFragment : Fragment(){
     }
 
     private fun openPlanet(){
-        (activity as MainActivity).openPlanet()
+        (activity as MainActivity).openPlanetList()
     }
 
     private fun openSpecie(){
@@ -88,4 +80,6 @@ class SelectionListFragment : Fragment(){
         Picasso.get().load(ImagesUrl.selectionStarship).into(ivStarship)
         Picasso.get().load(ImagesUrl.selectionVehicle).into(ivVehicle)
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.davidarribas.starwars.view
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -25,12 +26,10 @@ class FilmsListFragment: Fragment() {
     private val BASE_URL = "https://swapi.co/api/"
     private val filmList: ArrayList<Film> = ArrayList()
 
+    private lateinit var animationDrawable: AnimationDrawable
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_list, container, false)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +38,27 @@ class FilmsListFragment: Fragment() {
     }
 
     private fun loadFilms(){
+
+        clProgressBar.visibility = View.VISIBLE
+        ivProgressBar.setBackgroundResource(R.drawable.load_progressbar)
+        animationDrawable = ivProgressBar.background as AnimationDrawable
+        animationDrawable.start()
+
+        getFilms(object : Load{
+            override fun onLoad() {
+                clProgressBar.visibility = View.GONE
+            }
+
+            override fun onErrorLoad() {
+                clProgressBar.visibility = View.GONE
+                Toast.makeText(activity, getString(R.string.list_error), Toast.LENGTH_LONG).show()
+            }
+        })
+
+    }
+
+    private fun getFilms(loadlist: Load) {
+
         val builderFilm = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -46,6 +66,7 @@ class FilmsListFragment: Fragment() {
         val film = builderFilm.build()
 
         val starWarsClient = film.create(StarwarsService::class.java!!)
+
         val call = starWarsClient.getFilms()
 
         call.enqueue(object : Callback<Films> {
@@ -58,8 +79,16 @@ class FilmsListFragment: Fragment() {
                             film.results[i].edited, film.results[i].url))
                 }
 
-                rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-                rvList.adapter = FilmListAdapter(filmList, view!!.context, {item : Film -> filmClicked(item)})
+                if (rvList != null){
+                    rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+                    rvList.adapter = FilmListAdapter(filmList, view!!.context, {item : Film -> filmClicked(item)})
+                }
+
+                if (filmList.isEmpty()){
+                    loadlist.onErrorLoad()
+                }else{
+                    loadlist.onLoad()
+                }
             }
 
             override fun onFailure(call: Call<Films>, t: Throwable) {

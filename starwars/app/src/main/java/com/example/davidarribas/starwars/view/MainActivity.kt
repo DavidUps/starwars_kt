@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.model.Film
 import com.example.davidarribas.starwars.model.Person
+import com.example.davidarribas.starwars.model.Planet
 
 class MainActivity : AppCompatActivity(){
 
@@ -20,16 +21,18 @@ class MainActivity : AppCompatActivity(){
 
     fun openPeopleList(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PeopleListFragment()).addToBackStack("openPeopleList").commit()
-
     }
 
     fun openPeople(person : Person){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PeopleFragment.newInstance(person)).addToBackStack("openPeople").commit()
     }
 
-    fun openPlanet(){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetsListFragment()).addToBackStack("openPlanet").commit()
+    fun openPlanet(planet: Planet){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetFragment.newInstance(planet)).addToBackStack("openPlanet").commit()
+    }
 
+    fun openPlanetList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetsListFragment()).addToBackStack("openPlanet").commit()
     }
 
     fun openSpecie() {
@@ -46,10 +49,5 @@ class MainActivity : AppCompatActivity(){
 
     fun openFilmFramgent(film : Film){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, FilmFragment.newInstance(film)).addToBackStack("openFilmFramgent").commit()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-    //    supportFragmentManager.popBackStack()
     }
 }

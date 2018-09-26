@@ -18,4 +18,5 @@
     <string name="eye_color">Eye color:</string>
     <string name="birthday_year">Birthday year:</string>
     <string name="gender">Gender:</string>
+    <string name="list_error">A ocurrido un error al cargar los datos,  por favor intentelo de nuevo</string>
 </resources>

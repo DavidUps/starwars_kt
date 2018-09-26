@@ -1,29 +1,30 @@
 package com.example.davidarribas.starwars.view
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.model.Film
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_film.*
-import android.R.interpolator
-import android.R.attr.duration
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.example.davidarribas.starwars.model.ImagesUrl
+import com.squareup.picasso.Callback
+import java.lang.Exception
 
 
 class FilmFragment : Fragment() {
 
-    lateinit var film : Film
+    lateinit var film: Film
+    lateinit var animationDrawable: AnimationDrawable
 
     companion object {
-        fun newInstance(film: Film) : FilmFragment{
+        fun newInstance(film: Film): FilmFragment {
             val fragment = FilmFragment()
             val args = Bundle()
             args.putSerializable("films", film)
@@ -38,9 +39,7 @@ class FilmFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_film, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_film, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,28 +51,119 @@ class FilmFragment : Fragment() {
         imView.setTransitionGenerator(generator)
     }
 
-    private fun setImage(){
-        when (film.episode_id){
-            1 -> Picasso.get().load(ImagesUrl.filmEpI).into(imView)
-            2 -> Picasso.get().load(ImagesUrl.filmEpII).into(imView)
-            3 -> Picasso.get().load(ImagesUrl.filmEpIII).into(imView)
-            4 -> Picasso.get().load(ImagesUrl.filmEpIV).into(imView)
-            5 -> Picasso.get().load(ImagesUrl.filmEpV).into(imView)
-            6 -> Picasso.get().load(ImagesUrl.filmEpVI).into(imView)
-            7 -> Picasso.get().load(ImagesUrl.filmEpVII).into(imView)
-            else -> Picasso.get().load(ImagesUrl.filmDefault).into(imView)
+    private fun setImage() {
+
+        clProgressBarFilm.visibility = View.VISIBLE
+        ivProgressBar.setBackgroundResource(R.drawable.load_progressbar)
+        animationDrawable = ivProgressBar.background as AnimationDrawable
+        animationDrawable.start()
+
+        when (film.episode_id) {
+            1 -> {
+                Picasso.get().load(ImagesUrl.filmEpI).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            2 -> {
+                Picasso.get().load(ImagesUrl.filmEpII).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            3 -> {
+                Picasso.get().load(ImagesUrl.filmEpIII).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            4 -> {
+                Picasso.get().load(ImagesUrl.filmEpIV).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            5 -> {
+                Picasso.get().load(ImagesUrl.filmEpV).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            6 -> {
+                Picasso.get().load(ImagesUrl.filmEpVI).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            7 -> {
+                Picasso.get().load(ImagesUrl.filmEpVII).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
+            else -> {
+                Picasso.get().load(ImagesUrl.filmDefault).into(imView, object : Callback {
+                    override fun onSuccess() {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        clProgressBarFilm.visibility = View.GONE
+                    }
+
+                })
+            }
         }
     }
+
     @SuppressLint("SetTextI18n")
-    private fun setText(){
+    private fun setText() {
         tvTitle.text = film.title
         tvDirector.text = "Director: " + film.director
         tvProducer.text = "Productor: " + film.producer
         tvReleaseDate.text = "Estreno: " + film.release_date
         tvOpening.text = film.opening_crawl
     }
-
-    /*interface OnFragmentInteractionListenerSettings {
-        fun popFragment()
-    }*/
 }

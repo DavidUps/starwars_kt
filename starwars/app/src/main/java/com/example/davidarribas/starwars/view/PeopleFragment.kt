@@ -52,7 +52,4 @@ class PeopleFragment : Fragment() {
         tvBirthdayYear.text = tvBirthdayYear.text.toString() + person.birth_year
         tvGender.text = tvGender.text.toString() + person.gender
     }
-
-
-
 }

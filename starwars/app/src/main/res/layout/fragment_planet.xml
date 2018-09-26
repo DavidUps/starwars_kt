@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.github.florent37.arclayout.ArcLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:arc_cropDirection="cropOutside"
+            android:layout_weight="1">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/imView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"/>
+
+        </com.github.florent37.arclayout.ArcLayout>
+    </LinearLayout>
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titulo"
+                android:theme="@style/TextViewTitle"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border_background">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/information"
+                    android:theme="@style/TextViewTitleII"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvRotation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rotation period: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOrbital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Orbital period: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvDiameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diameter: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvClimate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Climate: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvGravity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gravity: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvTerrain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Terrain: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvSurface"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Surface water: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/tvPopulation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Population: "
+                    android:theme="@style/TextViewMain"
+                    android:layout_margin="10dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
