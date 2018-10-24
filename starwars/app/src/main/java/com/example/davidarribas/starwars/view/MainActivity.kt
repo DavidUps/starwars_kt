@@ -3,9 +3,7 @@ package com.example.davidarribas.starwars.view
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.davidarribas.starwars.R
-import com.example.davidarribas.starwars.model.Film
-import com.example.davidarribas.starwars.model.Person
-import com.example.davidarribas.starwars.model.Planet
+import com.example.davidarribas.starwars.model.*
 
 class MainActivity : AppCompatActivity(){
 
@@ -31,16 +29,25 @@ class MainActivity : AppCompatActivity(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetFragment.newInstance(planet)).addToBackStack("openPlanet").commit()
     }
 
+    fun openStarships(starship: Starship){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipFragment.newInstance(starship)).addToBackStack("openStarships").commit()
+    }
+
     fun openPlanetList(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetsListFragment()).addToBackStack("openPlanet").commit()
     }
 
-    fun openSpecie() {
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, SpeciesListFragment()).addToBackStack("openSpecie").commit()
+    fun openSpecieList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, SpeciesListFragment()).addToBackStack("openSpecieList").commit()
     }
 
-    fun openStarships(){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipsListFragment()).addToBackStack("openStarships").commit()
+    fun openSpecie(species: Species) {
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, SpecieFragment.newInstance(species)).addToBackStack("openSpecie").commit()
+    }
+
+    fun openStarshipsList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipsListFragment()).addToBackStack("openStarshipsList").commit()
+
     }
 
     fun openVehicles(){

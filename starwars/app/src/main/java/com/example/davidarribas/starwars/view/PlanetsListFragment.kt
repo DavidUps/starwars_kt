@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.example.davidarribas.starwars.BuildConfig
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.StarwarsService
 import com.example.davidarribas.starwars.adapters.PlanetListAdapter
@@ -23,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PlanetsListFragment: Fragment() {
 
-    private val BASE_URL = "https://swapi.co/api/"
     private var count = 1
     private var planetList : ArrayList<Planet> = ArrayList()
 
@@ -59,7 +59,7 @@ class PlanetsListFragment: Fragment() {
 
     private fun loadPlanet(load : Load){
         val builderPlanet = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BuildConfig.URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
 
         val planet = builderPlanet.build()

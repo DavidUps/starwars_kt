@@ -18,6 +18,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField  "String", "URL_BASE", "\"https://swapi.co/api/\""
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField  "String", "URL_BASE", "\"https://swapi.co/api/\""
         }
     }
 }
@@ -35,17 +41,13 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0-alpha3'
-
     //Desing
     implementation 'com.github.florent37:arclayout:1.0.3'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
-
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.0'
-
     //RX Java
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
 
