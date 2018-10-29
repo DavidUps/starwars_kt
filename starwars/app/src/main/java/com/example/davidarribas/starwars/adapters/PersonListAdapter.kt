@@ -30,5 +30,4 @@ class PersonListAdapter (val people: ArrayList<Person>, val context: Context, va
             itemView.setOnClickListener({clickListener(person)})
         }
     }
-
 }

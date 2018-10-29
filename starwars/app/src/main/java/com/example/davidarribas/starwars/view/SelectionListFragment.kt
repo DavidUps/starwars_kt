@@ -36,10 +36,6 @@ class SelectionListFragment : Fragment() {
             openSpecie()
         }
 
-        starship.setOnClickListener {
-            openStarships()
-        }
-
         vehicle.setOnClickListener {
             openVehicles()
         }
@@ -62,10 +58,6 @@ class SelectionListFragment : Fragment() {
 
     private fun openSpecie(){
         (activity as MainActivity).openSpecieList()
-    }
-
-    private fun openStarships(){
-        (activity as MainActivity).openStarshipsList()
     }
 
     private fun openVehicles(){

@@ -19,7 +19,4 @@ interface StarwarsService {
     @GET("species/")
     fun getSpecies(@Query("page") page: Int): Call<SpeciesList>
 
-    @GET("starships/")
-    fun getStarships(@Query("page") page: Int): Call<StarshipList>
-
 }

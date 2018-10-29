@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetFragment.newInstance(planet)).addToBackStack("openPlanet").commit()
     }
 
-    fun openStarships(starship: Starship){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipFragment.newInstance(starship)).addToBackStack("openStarships").commit()
-    }
-
     fun openPlanetList(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, PlanetsListFragment()).addToBackStack("openPlanet").commit()
     }
@@ -43,11 +39,6 @@ class MainActivity : AppCompatActivity(){
 
     fun openSpecie(species: Species) {
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, SpecieFragment.newInstance(species)).addToBackStack("openSpecie").commit()
-    }
-
-    fun openStarshipsList(){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipsListFragment()).addToBackStack("openStarshipsList").commit()
-
     }
 
     fun openVehicles(){
