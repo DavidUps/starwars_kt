@@ -41,11 +41,23 @@ class MainActivity : AppCompatActivity(){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, SpecieFragment.newInstance(species)).addToBackStack("openSpecie").commit()
     }
 
-    fun openVehicles(){
-        supportFragmentManager.beginTransaction().replace(R.id.lyMain, VehiclesListFragment()).addToBackStack("openVehicles").commit()
+    fun openVehicles(vehicles: Vehicles){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, VehiclesFragment.newInstance(vehicles)).addToBackStack("openVehicles").commit()
+    }
+
+    fun openVehiclesList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, VehiclesListFragment()).addToBackStack("openVehiclesList").commit()
     }
 
     fun openFilmFramgent(film : Film){
         supportFragmentManager.beginTransaction().replace(R.id.lyMain, FilmFragment.newInstance(film)).addToBackStack("openFilmFramgent").commit()
+    }
+
+    fun openStarshipList(){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipListFragment()).addToBackStack("openStarshipList").commit()
+    }
+
+    fun openStarship(starships: Starships){
+        supportFragmentManager.beginTransaction().replace(R.id.lyMain, StarshipFragment.newInstance(starships)).addToBackStack("openPeople").commit()
     }
 }

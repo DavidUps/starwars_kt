@@ -13,9 +13,9 @@ import com.example.davidarribas.starwars.BuildConfig
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.StarwarsService
 import com.example.davidarribas.starwars.adapters.StarshipListAdapter
-import com.example.davidarribas.starwars.adapters.VehiclesListAdapter
-import com.example.davidarribas.starwars.model.Vehicles
-import com.example.davidarribas.starwars.model.VehiclesList
+import com.example.davidarribas.starwars.model.Species
+import com.example.davidarribas.starwars.model.StarshipList
+import com.example.davidarribas.starwars.model.Starships
 import kotlinx.android.synthetic.main.fragment_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,10 +23,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class VehiclesListFragment: Fragment() {
+class StarshipListFragment : Fragment() {
 
     private var count = 1
-    private var vehiclesList : ArrayList<Vehicles> = ArrayList()
+    private var starshipsList : ArrayList<Starships> = ArrayList()
 
     private lateinit var animationDrawable: AnimationDrawable
 
@@ -45,7 +45,7 @@ class VehiclesListFragment: Fragment() {
         animationDrawable = ivProgressBar.background as AnimationDrawable
         animationDrawable.start()
 
-        loadVehicles(object : Load{
+        loadStarship(object : Load{
             override fun onLoad() {
                 clProgressBar.visibility = View.GONE
             }
@@ -57,49 +57,51 @@ class VehiclesListFragment: Fragment() {
         })
     }
 
-    private fun loadVehicles(load: Load) {
-        val builderVehicle= Retrofit.Builder()
+    private fun loadStarship(load: Load) {
+        val builderStarship= Retrofit.Builder()
                 .baseUrl(BuildConfig.URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
 
-        val vehicles = builderVehicle.build()
+        val starship = builderStarship.build()
 
-        val starwarsService = vehicles.create(StarwarsService::class.java)
+        val starwarsService = starship.create(StarwarsService::class.java)
 
-        getVehicle(starwarsService, load)
+        getStarship(starwarsService, load)
     }
 
-    private fun getVehicle(starwarsService: StarwarsService?, load: Load) {
-        val call = starwarsService!!.getvehicles(count)
+    private fun getStarship(starwarsService: StarwarsService?, load: Load) {
+        val call = starwarsService!!.getStarship(count)
 
-        call.enqueue(object : Callback<VehiclesList> {
-            override fun onFailure(call: Call<VehiclesList>, t: Throwable) {
+        call.enqueue(object : Callback<StarshipList> {
+            override fun onFailure(call: Call<StarshipList>, t: Throwable) {
                 t!!.printStackTrace()
             }
 
-            override fun onResponse(call: Call<VehiclesList>, response: Response<VehiclesList>) {
-                val vehicles= response!!.body()
-                for (i in 0 until vehicles!!.results.size){
-                    vehiclesList.add(Vehicles(
-                            vehicles.results[i].name,
-                            vehicles.results[i].model,
-                            vehicles.results[i].manufacturer,
-                            vehicles.results[i].cost_in_credits,
-                            vehicles.results[i].length,
-                            vehicles.results[i].max_atmosphering_speed,
-                            vehicles.results[i].crew,
-                            vehicles.results[i].passengers,
-                            vehicles.results[i].cargo_capacity,
-                            vehicles.results[i].consumables,
-                            vehicles.results[i].vehicle_class))
+            override fun onResponse(call: Call<StarshipList>, response: Response<StarshipList>) {
+                val starships= response!!.body()
+                for (i in 0..starships!!.results.size -1){
+                    starshipsList.add(Starships(
+                            starships.results[i].name,
+                            starships.results[i].model,
+                            starships.results[i].manufacturer,
+                            starships.results[i].cost_in_credits,
+                            starships.results[i].length,
+                            starships.results[i].max_atmosphering_speed,
+                            starships.results[i].crew,
+                            starships.results[i].passengers,
+                            starships.results[i].cargo_capacity,
+                            starships.results[i].consumables,
+                            starships.results[i].hyperdrive_rating,
+                            starships.results[i].MGLT,
+                            starships.results[i].starship_class))
                 }
                 if (count <= 3){
                     count++
-                    getVehicle(starwarsService, load)
+                    getStarship(starwarsService, load)
                 }else{
                     if (rvList != null){
                         rvList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-                        rvList.adapter = VehiclesListAdapter(vehiclesList, view!!.context) { item: Vehicles -> vehiclesClicked(item) }
+                        rvList.adapter = StarshipListAdapter(starshipsList, view!!.context) { item: Starships -> starshipClicked(item) }
                         load.onLoad()
                     }else{
                         load.onErrorLoad()
@@ -108,7 +110,7 @@ class VehiclesListFragment: Fragment() {
             }
         })
     }
-    private fun vehiclesClicked(item: Vehicles){
-        (activity as MainActivity).openVehicles(item)
+    private fun starshipClicked(item: Starships){
+        (activity as MainActivity).openStarship(item)
     }
 }

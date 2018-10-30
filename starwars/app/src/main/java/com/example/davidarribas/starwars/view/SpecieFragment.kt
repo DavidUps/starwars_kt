@@ -50,6 +50,4 @@ class SpecieFragment : Fragment(){
         tvAverageHeight.text = tvAverageHeight.text.toString() + species.average_height
         tvLanguage.text = tvLanguage.text.toString() + species.language
     }
-
-
 }

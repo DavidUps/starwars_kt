@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.davidarribas.starwars.R
-import com.example.davidarribas.starwars.model.Species
+import com.example.davidarribas.starwars.model.Vehicles
 import kotlinx.android.synthetic.main.films_list_adapter.view.*
 
-class SpeciesListAdapter (val specie: ArrayList<Species>, val context: Context, val clickListener: (Species) -> Unit): RecyclerView.Adapter<SpeciesListAdapter.ViewHolder>()  {
+class VehiclesListAdapter(private val vehicles : ArrayList<Vehicles>, val context: Context, private val clickListener: (Vehicles) -> Unit): RecyclerView.Adapter<VehiclesListAdapter.ViewHolder>()  {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val inflate = LayoutInflater.from(p0.context).inflate(R.layout.films_list_adapter, p0, false)
@@ -17,17 +17,17 @@ class SpeciesListAdapter (val specie: ArrayList<Species>, val context: Context, 
     }
 
     override fun getItemCount(): Int {
-        return specie.size
+        return vehicles.size
     }
 
-    override fun onBindViewHolder(p0: SpeciesListAdapter.ViewHolder, p1: Int) {
-        p0.bindItems(specie [p1],context,clickListener)
+    override fun onBindViewHolder(p0: VehiclesListAdapter.ViewHolder, p1: Int) {
+        p0.bindItems(vehicles[p1], clickListener)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bindItems(specie: Species, context: Context, clickListener: (Species) -> Unit){
-            itemView.tvTitle.setText(specie.name)
-            itemView.setOnClickListener({clickListener(specie)})
+        fun bindItems(vehicles: Vehicles, clickListener: (Vehicles) -> Unit){
+            itemView.tvTitle.text = vehicles.name
+            itemView.setOnClickListener {clickListener(vehicles)}
         }
     }
 }

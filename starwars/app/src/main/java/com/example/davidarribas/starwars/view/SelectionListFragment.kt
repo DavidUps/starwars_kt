@@ -40,8 +40,15 @@ class SelectionListFragment : Fragment() {
             openVehicles()
         }
 
+        starship.setOnClickListener {
+            openStarship()
+        }
         loadImages()
 
+    }
+
+    private fun openStarship() {
+        (activity as MainActivity).openStarshipList()
     }
 
     private fun openFilms(){
@@ -61,7 +68,7 @@ class SelectionListFragment : Fragment() {
     }
 
     private fun openVehicles(){
-        (activity as MainActivity).openVehicles()
+        (activity as MainActivity).openVehiclesList()
     }
 
     private fun loadImages(){
