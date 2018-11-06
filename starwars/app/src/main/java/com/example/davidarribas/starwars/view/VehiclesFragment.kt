@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.davidarribas.starwars.R
 import com.example.davidarribas.starwars.model.Vehicles
+import kotlinx.android.synthetic.main.fragment_vehicles.*
 
 class VehiclesFragment : Fragment() {
 
@@ -39,19 +40,16 @@ class VehiclesFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun setText() {
-        /*tvName.text = starships.name
-        tvModel.text = tvModel.text.toString() + starships.model
-        tvManufacturer.text = tvManufacturer.text.toString() + starships.manufacturer
-        tvCostInCredits.text = tvCostInCredits.text.toString() + starships.cost_in_credits
-        tvLength.text = tvLength.text.toString() + starships.length
-        tvMaxAtmosphering_speed.text = tvMaxAtmosphering_speed.text.toString() + starships.max_atmosphering_speed
-        tvCrew.text = tvCrew.text.toString() + starships.crew
-        tvPassengers.text = tvPassengers.text.toString() + starships.passengers
-        tvCargoCapacity.text = tvCargoCapacity.text.toString() + starships.cargo_capacity
-        tvConsumables.text = tvConsumables.text.toString() + starships.consumables
-        tvHyperdriveRating.text = tvHyperdriveRating.text.toString() + starships.hyperdrive_rating
-        tvMGLT.text = tvMGLT.text.toString() + starships.MGLT
-        tvStarshipClass.text = tvStarshipClass.text.toString() + starships.starship_class
-        */
+        tvName.text = vehicles.name
+        tvModel.text = tvModel.text.toString() + vehicles.model
+        tvManufacturer.text = tvManufacturer.text.toString() + vehicles.manufacturer
+        tvCostInCredits.text = tvCostInCredits.text.toString() + vehicles.cost_in_credits
+        tvLength.text = tvLength.text.toString() + vehicles.cost_in_credits
+        tvMaxAtmospheringSpeed.text = tvMaxAtmospheringSpeed.text.toString() + vehicles.max_atmosphering_speed
+        tvCrew.text = tvCrew.text.toString() + vehicles.crew
+        tvPassengers.text = tvPassengers.text.toString() + vehicles.passengers
+        tvCargoCapacity.text = tvCargoCapacity.text.toString() + vehicles.cargo_capacity
+        tvConsumables.text = tvConsumables.text.toString() + vehicles.consumables
+        tvVehicleClass.text = tvVehicleClass.text.toString() + vehicles.vehicle_class
     }
 }

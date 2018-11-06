@@ -11,5 +11,5 @@ class Vehicles(val name: String,
                val crew: String,
                val passengers: String,
                val cargo_capacity: String,
-               val consumables: ArrayList<String>,
-               val vehicle_class: ArrayList<String>): Serializable
+               val consumables: String,
+               val vehicle_class: String): Serializable
